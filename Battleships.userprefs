@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{08681810-6DE4-4E1E-A03B-BE2D0510759F}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Battleships\GameLogic.cs">
+    <Files>
+      <File FileName="Battleships\GameLogic.cs" Line="15" Column="19" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Battleships PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
