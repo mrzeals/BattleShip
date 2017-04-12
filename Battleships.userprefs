@@ -9,6 +9,17 @@
       <File FileName="Battleships\GameLogic.cs" Line="1" Column="1" />
       <File FileName="BattleShip Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Battleships" expanded="True">
+            <Node name="Battleships" expanded="True">
+              <Node name="References" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Battleships PreferredExecutionTarget="MonoDevelop.Default" />
