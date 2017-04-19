@@ -98,10 +98,11 @@ public class SeaGrid : ISeaGrid
 	/// </summary>
 	public SeaGrid(Dictionary<ShipName, Ship> ships)
 	{
+		_GameTiles = new Tile[Width, Height];
 		//fill array with empty Tiles
 		int i = 0;
-for (i = 0; i < Width; i++)
-{
+		for (i = 0; i < Width; i++) 
+		{
 			for (int j = 0; j < Height; j++)
 			{
 				_GameTiles[i, j] = new Tile(i, j, null);
@@ -155,8 +156,8 @@ for (i = 0; i < Width; i++)
 
 			//place ship's tiles in array and into ship object
 			int i = 0;
-for (i = 0; i < size; i++)
-{
+			for (i = 0; i < size; i++)
+			{
 				if (currentRow < 0 || currentRow >= Width || currentCol < 0 || currentCol >= Height)
 				{
 					throw new InvalidOperationException("Ship can't fit on the board");
