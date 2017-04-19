@@ -4,10 +4,11 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="BattleShip Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Battleships\src\Model\AIPlayer.cs">
     <Files>
-      <File FileName="Battleships\src\Model\Player.cs" Line="245" Column="15" />
+      <File FileName="Battleships\src\Model\Player.cs" Line="15" Column="45" />
       <File FileName="BattleShip Status" />
+      <File FileName="Battleships\src\Model\AIPlayer.cs" Line="103" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
