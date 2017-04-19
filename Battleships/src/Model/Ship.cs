@@ -77,6 +77,10 @@ public class Ship
 		}
 	}
 
+	/// <summary>
+	/// The column location of the ship
+	/// </summary>
+	/// <value>The column.</value>
 	public int Column
 	{
 		get
@@ -85,6 +89,10 @@ public class Ship
 		}
 	}
 
+	/// <summary>
+	/// The direction of the ship
+	/// </summary>
+	/// <value>The direction.</value>
 	public Direction Direction
 	{
 		get
@@ -93,6 +101,10 @@ public class Ship
 		}
 	}
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="T:Ship"/> class.
+	/// </summary>
+	/// <param name="ship">Ship.</param>
 	public Ship(ShipName ship)
 	{
 		_shipName = ship;
@@ -123,6 +135,9 @@ public class Ship
 		_tiles.Clear();
 	}
 
+	/// <summary>
+	/// Hit this ship.
+	/// </summary>
 	public void Hit()
 	{
 		_hitsTaken = _hitsTaken + 1;

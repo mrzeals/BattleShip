@@ -115,6 +115,10 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+	/// <summary>
+	/// Gets a value indicating whether this <see cref="T:Player"/> is destroyed.
+	/// </summary>
+	/// <value><c>true</c> if is destroyed; otherwise, <c>false</c>.</value>
 	public bool IsDestroyed
 	{
 		get
@@ -154,6 +158,10 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+	/// <summary>
+	/// The number of hits the player has made
+	/// </summary>
+	/// <value>The hits.</value>
 	public int Hits
 	{
 		get
@@ -175,6 +183,10 @@ public class Player : IEnumerable<Ship>
 		}
 	}
 
+	/// <summary>
+	/// Gets the player's score.
+	/// </summary>
+	/// <value>The score.</value>
 	public int Score
 	{
 		get
