@@ -7,7 +7,6 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="BattleShip Status">
     <Files>
       <File FileName="Battleships\src\Model\Player.cs" Line="245" Column="15" />
-      <File FileName="Battleships\src\Model\AIPlayer.cs" Line="77" Column="17" />
       <File FileName="BattleShip Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
