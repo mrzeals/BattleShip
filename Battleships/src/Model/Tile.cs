@@ -114,7 +114,6 @@ public class Tile
 				//and the tile has been hit
 				if (_Shot)
 				{
-
 					return TileView.Miss;
 				}
 				else

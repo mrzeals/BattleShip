@@ -64,6 +64,7 @@ public class Player : IEnumerable<Ship>
 			InstanceFieldsInitialized = true;
 		}
 		_game = controller;
+		_playerGrid = new SeaGrid(_Ships);
 
 		//for each ship add the ships name so the seagrid knows about them
 		foreach (ShipName name in Enum.GetValues(typeof(ShipName)))
@@ -130,9 +131,7 @@ public class Player : IEnumerable<Ship>
 	/// <value>The ship</value>
 	/// <returns>The ship with the indicated name</returns>
 	/// <remarks>The none ship returns nothing/null</remarks>
-//INSTANT C# NOTE: C# does not support parameterized properties - the following property has been rewritten as a function:
-//ORIGINAL LINE: Public ReadOnly Property Ship(ByVal name As ShipName) As Ship
-	public Ship get_Ship(ShipName name)
+	public Ship Ship(ShipName name)
 	{
 		if (name == ShipName.None)
 		{
@@ -242,6 +241,7 @@ public class Player : IEnumerable<Ship>
 	/// <returns>the result of the attack</returns>
 	internal AttackResult Shoot(int row, int col)
 	{
+		//!!!!Here got problem
 		_shots += 1;
 		AttackResult result = EnemyGrid.HitTile(row, col);
 
