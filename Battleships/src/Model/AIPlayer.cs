@@ -131,7 +131,7 @@ public abstract class AIPlayer : Player
 	/// <returns>The result of the last attack</returns>
 	public override AttackResult Attack()
 	{
-		AttackResult result = null;
+		AttackResult result = default(AttackResult);
 		int row = 0;
 		int column = 0;
 
@@ -152,9 +152,8 @@ public abstract class AIPlayer : Player
 	/// </summary>
 	private void Delay()
 	{
-		int i = 0;
-for (i = 0; i <= 150; i++)
-{
+		for (int i = 0; i <= 150; i++)
+		{
 			//Dont delay if window is closed
 			if (SwinGame.WindowCloseRequested())
 			{
