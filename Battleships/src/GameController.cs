@@ -1,35 +1,35 @@
-﻿using System;
-using SwinGameSDK;
+
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using SwinGameSDK;
 
 /// <summary>
 /// The GameController is responsible for controlling the game,
 /// managing user input, and displaying the current state of the
-/// game.
+/// game
 /// </summary>
 public static class GameController
 {
 
 	private static BattleShipsGame _theGame;
 	private static Player _human;
+
 	private static AIPlayer _ai;
 
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
-
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
 	/// </summary>
 	/// <value>The current state</value>
 	/// <returns>The current state</returns>
-	public static GameState CurrentState
-	{
-		get
-		{
-			return _state.Peek();
-		}
+	public static GameState CurrentState {
+		get { return _state.Peek(); }
 	}
 
 	/// <summary>
@@ -37,12 +37,8 @@ public static class GameController
 	/// </summary>
 	/// <value>the human player</value>
 	/// <returns>the human player</returns>
-	public static Player HumanPlayer
-	{
-		get
-		{
-			return _human;
-		}
+	public static Player HumanPlayer {
+		get { return _human; }
 	}
 
 	/// <summary>
@@ -50,12 +46,8 @@ public static class GameController
 	/// </summary>
 	/// <value>the computer player</value>
 	/// <returns>the conputer player</returns>
-	public static Player ComputerPlayer
-	{
-		get
-		{
-			return _ai;
-		}
+	public static Player ComputerPlayer {
+		get { return _ai; }
 	}
 
 	static GameController()
@@ -76,30 +68,25 @@ public static class GameController
 	public static void StartGame()
 	{
 		if (_theGame != null)
-		{
 			EndGame();
-		}
 
 		//Create the game
 		_theGame = new BattleShipsGame();
 
 		//create the players
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case _aiSetting
-//ORIGINAL LINE: Case AIOption.Medium
-		if (_aiSetting == AIOption.Medium)
-		{
-			_ai = new AIMediumPlayer(_theGame);
-		}
-//ORIGINAL LINE: Case AIOption.Hard
-		else if (_aiSetting == AIOption.Hard)
-		{
-			_ai = new AIHardPlayer(_theGame);
-		}
-//ORIGINAL LINE: Case Else
-		else
-		{
-			_ai = new AIHardPlayer(_theGame);
+		switch (_aiSetting) {
+            case AIOption.Easy:
+                _ai = new AIEasyPlayer(_theGame);
+               break;
+			case AIOption.Medium:
+				_ai = new AIMediumPlayer(_theGame);
+				break;
+			case AIOption.Hard:
+				_ai = new AIHardPlayer(_theGame);
+				break;
+			default:
+				_ai = new AIHardPlayer(_theGame);
+				break;
 		}
 
 		_human = new Player(_theGame);
@@ -133,11 +120,10 @@ public static class GameController
 		DrawScreen();
 		SwinGame.RefreshScreen();
 	}
-
+	/// Edited by SzeSan added UtilityFunctions.AddExplosion/DrawAnimationSequence & GameResources.GameSound
 	private static void PlayHitSequence(int row, int column, bool showAnimation)
 	{
-		if (showAnimation)
-		{
+		if (showAnimation) {
 			UtilityFunctions.AddExplosion(row, column);
 		}
 
@@ -145,11 +131,10 @@ public static class GameController
 
 		UtilityFunctions.DrawAnimationSequence();
 	}
-
+	/// Edited by SzeSan added UtilityFunctions.AddSplash/DrawAnimationSequence & GameResources.GameSound
 	private static void PlayMissSequence(int row, int column, bool showAnimation)
 	{
-		if (showAnimation)
-		{
+		if (showAnimation) {
 			UtilityFunctions.AddSplash(row, column);
 		}
 
@@ -166,64 +151,49 @@ public static class GameController
 	/// <remarks>
 	/// Displays a message, plays sound and redraws the screen
 	/// </remarks>
+	/// Edited by SzeSan added UtilityFunctions.Message & GameResources.GameSound
 	private static void AttackCompleted(object sender, AttackResult result)
 	{
-		bool isHuman = _theGame.Player == HumanPlayer;
+		bool isHuman = false;
+		isHuman = object.ReferenceEquals(_theGame.Player, HumanPlayer);
 
-		if (isHuman)
-		{
+		if (isHuman) {
 			UtilityFunctions.Message = "You " + result.ToString();
-		}
-		else
-		{
+		} else {
 			UtilityFunctions.Message = "The AI " + result.ToString();
 		}
 
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case result.Value
-//ORIGINAL LINE: Case ResultOfAttack.Destroyed
-		if (result.Value == ResultOfAttack.Destroyed)
-		{
-			PlayHitSequence(result.Row, result.Column, isHuman);
+		switch (result.Value) {
+			case ResultOfAttack.Destroyed:
+				PlayHitSequence(result.Row, result.Column, isHuman);
 			Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
-		}
-//ORIGINAL LINE: Case ResultOfAttack.GameOver
-		else if (result.Value == ResultOfAttack.GameOver)
-		{
-			PlayHitSequence(result.Row, result.Column, isHuman);
+				break;
+			case ResultOfAttack.GameOver:
+				PlayHitSequence(result.Row, result.Column, isHuman);
 			Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
-			while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
-			{
-				SwinGame.Delay(10);
-				SwinGame.RefreshScreen();
-			}
+			while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink"))) {
+					SwinGame.Delay(10);
+					SwinGame.RefreshScreen();
+				}
 
-			if (HumanPlayer.IsDestroyed)
-			{
+				if (HumanPlayer.IsDestroyed) {
 				Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
-			}
-			else
-			{
+				} else {
 				Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
-			}
+				}
 
-		}
-//ORIGINAL LINE: Case ResultOfAttack.Hit
-		else if (result.Value == ResultOfAttack.Hit)
-		{
-			PlayHitSequence(result.Row, result.Column, isHuman);
-		}
-//ORIGINAL LINE: Case ResultOfAttack.Miss
-		else if (result.Value == ResultOfAttack.Miss)
-		{
-			PlayMissSequence(result.Row, result.Column, isHuman);
-		}
-//ORIGINAL LINE: Case ResultOfAttack.ShotAlready
-		else if (result.Value == ResultOfAttack.ShotAlready)
-		{
+				break;
+			case ResultOfAttack.Hit:
+				PlayHitSequence(result.Row, result.Column, isHuman);
+				break;
+			case ResultOfAttack.Miss:
+				PlayMissSequence(result.Row, result.Column, isHuman);
+				break;
+			case ResultOfAttack.ShotAlready:
 			Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+				break;
 		}
 	}
 
@@ -254,7 +224,8 @@ public static class GameController
 	/// </remarks>
 	public static void Attack(int row, int col)
 	{
-		AttackResult result = _theGame.Shoot(row, col);
+		AttackResult result = default(AttackResult);
+		result = _theGame.Shoot(row, col);
 		CheckAttackResult(result);
 	}
 
@@ -266,7 +237,8 @@ public static class GameController
 	/// </remarks>
 	private static void AIAttack()
 	{
-		AttackResult result = _theGame.Player.Attack();
+		AttackResult result = default(AttackResult);
+		result = _theGame.Player.Attack();
 		CheckAttackResult(result);
 	}
 
@@ -280,20 +252,14 @@ public static class GameController
 	/// to the AI player.</remarks>
 	private static void CheckAttackResult(AttackResult result)
 	{
-//INSTANT C# NOTE: The following VB 'Select Case' included either a non-ordinal switch expression or non-ordinal, range-type, or non-constant 'Case' expressions and was converted to C# 'if-else' logic:
-//		Select Case result.Value
-//ORIGINAL LINE: Case ResultOfAttack.Miss
-		if (result.Value == ResultOfAttack.Miss)
-		{
-			if (_theGame.Player == ComputerPlayer)
-			{
-				AIAttack();
-			}
-		}
-//ORIGINAL LINE: Case ResultOfAttack.GameOver
-		else if (result.Value == ResultOfAttack.GameOver)
-		{
-			SwitchState(GameState.EndingGame);
+		switch (result.Value) {
+			case ResultOfAttack.Miss:
+				if (object.ReferenceEquals(_theGame.Player, ComputerPlayer))
+					AIAttack();
+				break;
+			case ResultOfAttack.GameOver:
+				SwitchState(GameState.EndingGame);
+				break;
 		}
 	}
 
@@ -305,13 +271,13 @@ public static class GameController
 	/// actions for the game to perform. The actions
 	/// performed depend upon the state of the game.
 	/// </remarks>
+	/// Edited by SzeSan
 	public static void HandleUserInput()
 	{
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
-		switch (CurrentState)
-		{
+		switch (CurrentState) {
 			case GameState.ViewingMainMenu:
 				MenuController.HandleMainMenuInput();
 				break;
@@ -344,12 +310,12 @@ public static class GameController
 	/// <remarks>
 	/// What is drawn depends upon the state of the game.
 	/// </remarks>
+	/// Edited by SzeSan 
 	public static void DrawScreen()
 	{
 		UtilityFunctions.DrawBackground();
 
-		switch (CurrentState)
-		{
+		switch (CurrentState) {
 			case GameState.ViewingMainMenu:
 				MenuController.DrawMainMenu();
 				break;
@@ -383,6 +349,7 @@ public static class GameController
 	/// so that it can be returned to.
 	/// </summary>
 	/// <param name="state">the new game state</param>
+	/// Edited by SzeSan
 	public static void AddNewState(GameState state)
 	{
 		_state.Push(state);
@@ -416,4 +383,21 @@ public static class GameController
 		_aiSetting = setting;
 	}
 
+	public static AIOption AiSetting
+	{
+		get
+		{
+			return _aiSetting; 
+		}
+
+	}
+
+
 }
+
+//=======================================================
+//Service provided by Telerik (www.telerik.com)
+//Conversion powered by NRefactory.
+//Twitter: @telerik
+//Facebook: facebook.com/telerik
+//=======================================================
