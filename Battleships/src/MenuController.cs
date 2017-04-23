@@ -23,8 +23,8 @@ internal static class MenuController
 		new string[] {"EASY", "MEDIUM", "HARD"}
 	};
 
-	private const int MENU_TOP = 575;
-	private const int MENU_LEFT = 30;
+	private const int MENU_TOP = 400;
+	private const int MENU_LEFT = 60;
 	private const int MENU_GAP = 0;
 	private const int BUTTON_WIDTH = 75;
 	private const int BUTTON_HEIGHT = 15;
