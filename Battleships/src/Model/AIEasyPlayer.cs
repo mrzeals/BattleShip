@@ -8,7 +8,7 @@ using SwinGameSDK;
 /// <summary>
 /// AI easy player is a type of player.
 /// </summary>
-class AIEasyPlayer : AIPlayer
+public class AIEasyPlayer : AIPlayer
 {
 	public AIEasyPlayer(BattleShipsGame controller) : base(controller)
 	{
