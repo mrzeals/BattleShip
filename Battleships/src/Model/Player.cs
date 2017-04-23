@@ -302,6 +302,7 @@ public class Player : IEnumerable<Ship>
 					placementSuccessful = false;
 				}
 			} while (!placementSuccessful);
+
 		}
 	}
 }
