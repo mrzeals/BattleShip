@@ -8,14 +8,6 @@ using System.Collections.Generic;
 /// </summary>
 public class Player : IEnumerable<Ship>
 {
-	private bool InstanceFieldsInitialized = false;
-
-	private void InitializeInstanceFields()
-	{
-		_Ships = new Dictionary<ShipName, Ship>();
-		_playerGrid = new SeaGrid(_Ships);
-	}
-
 	protected static Random _Random = new Random();
 
 	private Dictionary<ShipName, Ship> _Ships;
@@ -58,11 +50,6 @@ public class Player : IEnumerable<Ship>
 
 	public Player(BattleShipsGame controller)
 	{
-		if (!InstanceFieldsInitialized)
-		{
-			InitializeInstanceFields();
-			InstanceFieldsInitialized = true;
-		}
 		_game = controller;
 		_playerGrid = new SeaGrid(_Ships);
 
@@ -207,10 +194,7 @@ public class Player : IEnumerable<Ship>
 	/// has.
 	/// </summary>
 	/// <returns>A Ship enumerator</returns>
-	IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
-	{
-		return this.GetShipEnumerator();
-	}
+
 	public IEnumerator<Ship> GetShipEnumerator()
 	{
 		Ship[] result = new Ship[_Ships.Values.Count + 1];
@@ -220,7 +204,10 @@ public class Player : IEnumerable<Ship>
 
 		return lst.GetEnumerator();
 	}
-
+	IEnumerator<Ship> IEnumerable<Ship>.GetEnumerator()
+	{
+		return this.GetShipEnumerator();
+	}
 	/// <summary>
 	/// Makes it possible to enumerate over the ships the player
 	/// has.
