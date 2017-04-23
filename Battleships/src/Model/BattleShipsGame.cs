@@ -1,5 +1,9 @@
-﻿using System;
-
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using SwinGameSDK;
 /// <summary>
 /// The BattleShipsGame controls a big part of the game. It will add the two players
 /// to the game and make sure that both players ships are all deployed before starting the game.
@@ -26,8 +30,8 @@ public class BattleShipsGame
 	public event AttackCompletedHandler AttackCompleted;
 
 	private Player[] _players = new Player[3];
-	private int _playerIndex = 0;
 
+	private int _playerIndex = 0;
 	/// <summary>
 	/// The current player.
 	/// </summary>
@@ -36,10 +40,7 @@ public class BattleShipsGame
 	/// <remarks>This value will switch between the two players as they have their attacks</remarks>
 	public Player Player
 	{
-		get
-		{
-			return _players[_playerIndex];
-		}
+		get { return _players[_playerIndex]; }
 	}
 
 	/// <summary>
@@ -83,7 +84,7 @@ public class BattleShipsGame
 	/// <returns>The result of the attack</returns>
 	public AttackResult Shoot(int row, int col)
 	{
-		AttackResult newAttack = null;
+		AttackResult newAttack = default(AttackResult);
 		int otherPlayer = (_playerIndex + 1) % 2;
 
 		newAttack = Player.Shoot(row, col);
@@ -95,7 +96,9 @@ public class BattleShipsGame
 		}
 
 		if (AttackCompleted != null)
+		{
 			AttackCompleted(this, newAttack);
+		}
 
 		//change player if the last hit was a miss
 		if (newAttack.Value == ResultOfAttack.Miss)

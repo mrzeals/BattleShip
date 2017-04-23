@@ -1,5 +1,9 @@
-﻿using System;
-
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using SwinGameSDK;
 /// <summary>
 /// AttackResult gives the result after a shot has been made.
 /// </summary>
@@ -9,8 +13,8 @@ public class AttackResult
 	private Ship _Ship;
 	private string _Text;
 	private int _Row;
-	private int _Column;
 
+	private int _Column;
 	/// <summary>
 	/// The result of the attack
 	/// </summary>
@@ -18,10 +22,7 @@ public class AttackResult
 	/// <returns>The result of the attack</returns>
 	public ResultOfAttack Value
 	{
-		get
-		{
-			return _Value;
-		}
+		get { return _Value; }
 	}
 
 	/// <summary>
@@ -31,10 +32,7 @@ public class AttackResult
 	/// <returns>The ship, if any, involved in this result</returns>
 	public Ship Ship
 	{
-		get
-		{
-			return _Ship;
-		}
+		get { return _Ship; }
 	}
 
 	/// <summary>
@@ -45,10 +43,7 @@ public class AttackResult
 	/// <remarks>A textual description of the result.</remarks>
 	public string Text
 	{
-		get
-		{
-			return _Text;
-		}
+		get { return _Text; }
 	}
 
 	/// <summary>
@@ -56,10 +51,7 @@ public class AttackResult
 	/// </summary>
 	public int Row
 	{
-		get
-		{
-			return _Row;
-		}
+		get { return _Row; }
 	}
 
 	/// <summary>
@@ -67,10 +59,7 @@ public class AttackResult
 	/// </summary>
 	public int Column
 	{
-		get
-		{
-			return _Column;
-		}
+		get { return _Column; }
 	}
 
 	/// <summary>

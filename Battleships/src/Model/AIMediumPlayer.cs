@@ -1,5 +1,10 @@
-﻿using System;
+﻿
+using Microsoft.VisualBasic;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using SwinGameSDK;
 
 /// <summary>
 /// The AIMediumPlayer is a type of AIPlayer where it will try and destroy a ship
@@ -19,8 +24,8 @@ public class AIMediumPlayer : AIPlayer
 	}
 
 	private AIStates _CurrentState = AIStates.Searching;
-	private Stack<Location> _Targets = new Stack<Location>();
 
+private Stack<Location> _Targets = new Stack<Location>();
 	public AIMediumPlayer(BattleShipsGame controller) : base(controller)
 	{
 	}
@@ -49,7 +54,8 @@ public class AIMediumPlayer : AIPlayer
 				default:
 					throw new ApplicationException("AI has gone in an imvalid state");
 			}
-		} while (row < 0 || column < 0 || row >= EnemyGrid.Height || column >= EnemyGrid.Width || EnemyGrid[row, column] != TileView.Sea); //while inside the grid and not a sea tile do the search
+		} while ((row < 0 || column < 0 || row >= EnemyGrid.Height || column >= EnemyGrid.Width || EnemyGrid[row, column] != TileView.Sea));
+		//while inside the grid and not a sea tile do the search
 	}
 
 	/// <summary>
@@ -62,10 +68,8 @@ public class AIMediumPlayer : AIPlayer
 	{
 		Location l = _Targets.Pop();
 
-		if (_Targets.Count == 0)
-		{
+		if ((_Targets.Count == 0))
 			_CurrentState = AIStates.Searching;
-		}
 		row = l.Row;
 		column = l.Column;
 	}
@@ -89,9 +93,9 @@ public class AIMediumPlayer : AIPlayer
 	/// <param name="row">the row it needs to process</param>
 	/// <param name="col">the column it needs to process</param>
 	/// <param name="result">the result og the last shot (should be hit)</param>
+
 	protected override void ProcessShot(int row, int col, AttackResult result)
 	{
-
 		if (result.Value == ResultOfAttack.Hit)
 		{
 			_CurrentState = AIStates.TargetingShip;
@@ -113,9 +117,9 @@ public class AIMediumPlayer : AIPlayer
 	/// <param name="column">the column of the targets location</param>
 	private void AddTarget(int row, int column)
 	{
+
 		if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid[row, column] == TileView.Sea)
 		{
-
 			_Targets.Push(new Location(row, column));
 		}
 	}
