@@ -77,6 +77,7 @@ public class AIHardPlayer : AIPlayer
 		/// </summary>
 		Searching,
 
+
 		/// <summary>
 		/// The AI is trying to target a ship
 		/// </summary>
