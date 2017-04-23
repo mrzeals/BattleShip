@@ -1,14 +1,9 @@
+﻿using System;
 
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using SwinGameSDK;
 /// <summary>
 /// The GameStates represent the state of the Battleships game play.
 /// This is used to control the actions and view displayed to
-/// the player
+/// the player.
 /// </summary>
 
 public enum GameState
@@ -53,10 +48,3 @@ public enum GameState
 	/// </summary>
 	Quitting
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================
