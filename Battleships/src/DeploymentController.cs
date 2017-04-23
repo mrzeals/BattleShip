@@ -5,6 +5,7 @@ using SwinGameSDK;
 /// The DeploymentController controls the players actions
 /// during the deployment phase.
 /// </summary>
+/// 
 internal static class DeploymentController
 {
 	private const int SHIPS_TOP = 98;
