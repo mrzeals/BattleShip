@@ -10,7 +10,7 @@ public class Player : IEnumerable<Ship>
 {
 	protected static Random _Random = new Random();
 
-	private Dictionary<ShipName, Ship> _Ships;
+	private Dictionary<ShipName, Ship> _Ships = new Dictionary<ShipName, Ship>();
 	private SeaGrid _playerGrid;
 	private ISeaGrid _enemyGrid;
 	protected BattleShipsGame _game;
