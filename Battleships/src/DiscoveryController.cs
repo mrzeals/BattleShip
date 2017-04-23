@@ -32,9 +32,9 @@ internal static class DiscoveryController
 	/// </summary>
 	private static void DoAttack()
 	{
-		Point2D mouse = SwinGame.MousePosition();
-
-
+		//set point2d to default
+		Point2D mouse = default(Point2D);
+		mouse = SwinGame.MousePosition();
 		//Calculate the row/col clicked
 		int row = 0;
 		int col = 0;

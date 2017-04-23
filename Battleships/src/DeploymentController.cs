@@ -62,7 +62,9 @@ internal static class DeploymentController
 
 		if (SwinGame.MouseClicked(MouseButton.LeftButton))
 		{
-			ShipName selected = GetShipMouseIsOver();
+			//set shipname to default
+			ShipName selected = default(ShipName);
+			selected = GetShipMouseIsOver();
 			if (selected != ShipName.None)
 			{
 				_selectedShip = selected;
@@ -101,7 +103,9 @@ internal static class DeploymentController
 	/// </remarks>
 	private static void DoDeployClick()
 	{
-		Point2D mouse = SwinGame.MousePosition();
+		//set (Point2D) to default
+		Point2D mouse = default(Point2D);
+		mouse = SwinGame.MousePosition();
 
 
 		//Calculate the row/col clicked
@@ -153,7 +157,9 @@ internal static class DeploymentController
 		//DrawShips
 		foreach (ShipName sn in Enum.GetValues(typeof(ShipName)))
 		{
-			int i = Convert.ToInt32(Math.Floor(Convert.ToDouble(sn)) - 1);
+			//int i = Convert.ToInt32(Math.Floor(Convert.ToDouble(sn)) - 1);
+			int i = 0;
+			i = ((int)sn) - 1;
 			if (i >= 0)
 			{
 				if (sn == _selectedShip)
@@ -190,7 +196,8 @@ internal static class DeploymentController
 	{
 		foreach (ShipName sn in Enum.GetValues(typeof(ShipName)))
 		{
-			int i = Convert.ToInt32(Math.Floor(Convert.ToDouble(sn)) - 1);
+			int i = 0;
+			i = ((int)sn) - 1;
 
 			if (UtilityFunctions.IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT))
 			{

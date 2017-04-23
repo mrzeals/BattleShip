@@ -349,10 +349,8 @@ internal static class UtilityFunctions
 	public static void DrawAnimationSequence()
 	{
 		int i = 0;
-//INSTANT C# NOTE: The ending condition of VB 'For' loops is tested only on entry to the loop. Instant C# has created a temporary variable in order to use the initial value of ANIMATION_CELLS * FRAMES_PER_CELL for every iteration:
-int tempVar = ANIMATION_CELLS * FRAMES_PER_CELL;
-for (i = 1; i <= tempVar; i++)
-{
+		for (i = 1; i <= ANIMATION_CELLS * FRAMES_PER_CELL; i++)
+		{
 			UpdateAnimations();
 			GameController.DrawScreen();
 		}
