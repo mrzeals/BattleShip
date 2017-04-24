@@ -11,6 +11,7 @@ using System.Collections.Generic;
 /// </remarks>
 internal static class HighScoreController
 {
+	//Edited by Voon.
 	private const int NAME_WIDTH = 10;
 	private const int SCORES_LEFT = 490;
 
