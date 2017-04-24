@@ -46,7 +46,8 @@ for (i = 1; i <= 5; i++)
 		NewSound("Error", "error.wav");
 		NewSound("Hit", "hit.wav");
 		NewSound("Sink", "sink.wav");
-		NewSound("Siren", "siren.wav");
+		//fixed by Voon.
+		//NewSound("Siren", "siren.wav");
 		NewSound("Miss", "watershot.wav");
 		NewSound("Winner", "winner.wav");
 		NewSound("Lose", "lose.wav");
