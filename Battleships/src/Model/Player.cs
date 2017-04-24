@@ -242,6 +242,7 @@ public class Player : IEnumerable<Ship>
 	{
 		AttackResult result = EnemyGrid.HitTile(row, col);
 
+		//fixed by Voon.
 		switch (result.Value)
 		{
 			case ResultOfAttack.Destroyed:
