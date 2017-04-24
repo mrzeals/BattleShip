@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// </remarks>
 internal static class HighScoreController
 {
-	private const int NAME_WIDTH = 3;
+	private const int NAME_WIDTH = 10;
 	private const int SCORES_LEFT = 490;
 
 	/// <summary>
@@ -51,9 +51,9 @@ internal static class HighScoreController
 	/// <remarks>
 	/// The format is
 	/// # of scores
-	/// NNNSSS
+	/// NNNNNNNNNNSSS
 	/// 
-	/// Where NNN is the name and SSS is the score
+	/// Where NNNNNNNNNN is the name and SSS is the score
 	/// </remarks>
 	private static void LoadScores()
 	{
@@ -68,11 +68,9 @@ internal static class HighScoreController
 
 		int i = 0;
 
-//INSTANT C# NOTE: There is no C# equivalent to VB's implicit 'once only' variable initialization within loops, so the following variable declaration has been placed prior to the loop:
-		Score s = new Score();
 		for (i = 1; i <= numScores; i++)
 		{
-//			Dim s As Score
+			Score s = new Score();
 			string line = input.ReadLine();
 
 
@@ -127,10 +125,12 @@ internal static class HighScoreController
 
 		//For all of the scores
 		int i = 0;
-for (i = 0; i < _Scores.Count; i++)
-{
+		for (i = 0; i < _Scores.Count; i++)
+		{
 			Score s = default(Score);
 
+			//fixed by Voon.
+			s = _Scores[i];
 
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9)
@@ -209,9 +209,9 @@ public static void DrawInstruction()
 
 			s.Name = SwinGame.TextReadAsASCII();
 
-			if (s.Name.Length < 3)
+			if (s.Name.Length < 10)
 			{
-				s.Name = s.Name + new string(' ', 3 - s.Name.Length);
+				s.Name = s.Name + new string(' ', 10 - s.Name.Length);
 			}
 
 			_Scores.RemoveAt(_Scores.Count - 1);
