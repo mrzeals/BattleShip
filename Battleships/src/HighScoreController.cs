@@ -143,7 +143,19 @@ for (i = 0; i < _Scores.Count; i++)
 			}
 		}
 	}
-
+	/// <summary>
+	/// Give instruction about gameplay
+	/// </summary>
+public static void DrawInstruction()
+{
+	SwinGame.DrawText("Gameplay Instructions", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 30);
+	SwinGame.DrawText("----------------------------------------", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 40);
+	SwinGame.DrawText("1. Please choose the difficulties of the game", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 100);
+	SwinGame.DrawText("2. Click the Play button to start the battleship game", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 130);
+	SwinGame.DrawText("3. Arrange 5 ships where you want to put", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 160);
+	SwinGame.DrawText("4. Click the play symbol at the top right to proceed", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 190);
+	SwinGame.DrawText("5. Choose the place you want to shoot until you defeat the enemy", Color.AliceBlue, GameResources.GameFont("Courier"), 2, 220);
+		}
 	/// <summary>
 	/// Handles the user input during the top score screen.
 	/// </summary>
@@ -209,4 +221,5 @@ for (i = 0; i < _Scores.Count; i++)
 			GameController.EndCurrentState();
 		}
 	}
+
 }

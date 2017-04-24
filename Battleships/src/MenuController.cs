@@ -18,8 +18,8 @@ internal static class MenuController
 	/// </remarks>
 	private static readonly string[][] _menuStructure =
 	{
-		new string[] {"PLAY", "SETUP", "SCORES", "QUIT"},
-		new string[] {"RETURN", "SURRENDER", "QUIT"},
+		new string[] {"PLAY", "SETUP", "SCORES","INSTRUCTION", "QUIT"},
+		new string[] {"RETURN", "SURRENDER","INSTRUCTION", "QUIT"},
 		new string[] {"EASY", "MEDIUM", "HARD"}
 	};
 
@@ -38,7 +38,8 @@ internal static class MenuController
 	private const int MAIN_MENU_PLAY_BUTTON = 0;
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
-	private const int MAIN_MENU_QUIT_BUTTON = 3;
+	private const int MAIN_MENU_INSTRUCTION = 3;
+	private const int MAIN_MENU_QUIT_BUTTON = 4;
 
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
@@ -47,7 +48,8 @@ internal static class MenuController
 
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
-	private const int GAME_MENU_QUIT_BUTTON = 2;
+private const int GAME_MENU_INSTRUCTION_BUTTON = 2;
+	private const int GAME_MENU_QUIT_BUTTON = 3;
 
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
@@ -99,23 +101,18 @@ internal static class MenuController
 			return true;
 		}
 
-		if (SwinGame.MouseClicked(MouseButton.LeftButton))
-		{
+
+		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			int i = 0;
-//INSTANT C# NOTE: The ending condition of VB 'For' loops is tested only on entry to the loop. Instant C# has created a temporary variable in order to use the initial value of _menuStructure(menu).Length for every iteration:
-int tempVar = _menuStructure[menu].Length;
-for (i = 0; i < tempVar; i++)
-{
+			for (i = 0; i <= _menuStructure[menu].Length - 1; i++) {
 				//IsMouseOver the i'th button of the menu
-				if (IsMouseOverMenu(i, level, xOffset))
-				{
+				if (IsMouseOverMenu(i, level, xOffset)) {
 					PerformMenuAction(menu, i);
 					return true;
 				}
 			}
 
-			if (level > 0)
-			{
+			if (level > 0) {
 				//none clicked - so end this sub menu
 				GameController.EndCurrentState();
 			}
@@ -264,6 +261,9 @@ for (i = 0; i < tempVar; i++)
 			case MAIN_MENU_TOP_SCORES_BUTTON:
 				GameController.AddNewState(GameState.ViewingHighScores);
 				break;
+					case MAIN_MENU_INSTRUCTION:
+			GameController.AddNewState (GameState.Instruction);
+			break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;
@@ -305,8 +305,11 @@ for (i = 0; i < tempVar; i++)
 				break;
 			case GAME_MENU_SURRENDER_BUTTON:
 				GameController.EndCurrentState(); //end game menu
-				GameController.EndCurrentState(); //end game
+			
 				break;
+				case GAME_MENU_INSTRUCTION_BUTTON:
+			GameController.AddNewState (GameState.Instruction);
+			break;
 			case GAME_MENU_QUIT_BUTTON:
 				GameController.AddNewState(GameState.Quitting);
 				break;
