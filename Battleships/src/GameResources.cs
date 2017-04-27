@@ -1,6 +1,9 @@
 ﻿using System;
 using SwinGameSDK;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 
 public static class GameResources
 {
@@ -21,6 +24,10 @@ public static class GameResources
 		NewImage("Deploy", "deploy.jpg");
 
 		//Deployment
+		//added a homebutton by jesse
+		NewImage("HomeButton", "deploy_home_button.png");
+
+
 		NewImage("LeftRightButton", "deploy_dir_button_horiz.png");
 		NewImage("UpDownButton", "deploy_dir_button_vert.png");
 		NewImage("SelectedShip", "deploy_button_hl.png");

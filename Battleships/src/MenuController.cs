@@ -1,5 +1,6 @@
 ﻿using System;
 using SwinGameSDK;
+using System.Collections.Generic;
 
 /// <summary>
 /// The menu controller handles the drawing and user interactions
@@ -274,15 +275,15 @@ internal static class MenuController
 				if (bgm_muted == false)
 				{
 					Audio.StopMusic();
-					bgm_muted = true;
-					break;
 				}
 				else
 				{
-					SwinGame.PlayMusic(GameResources.GameMusic("Background"));
-					bgm_muted = false;
-					break;
+					//SwinGame.PlayMusic(GameResources.GameMusic("Background"));
+					Audio.PlayMusic(GameResources.GameMusic("Background"));
 				}
+				bgm_muted = !bgm_muted;
+				break;
+
 			case MAIN_MENU_INSTRUCTION:
 				GameController.AddNewState (GameState.Instruction);
 				break;
