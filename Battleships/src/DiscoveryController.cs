@@ -30,7 +30,7 @@ internal static class DiscoveryController
 		if (SwinGame.MouseClicked(MouseButton.LeftButton) & UtilityFunctions.IsMouseInRectangle
 			(685, 70, 51, 46))
 		{
-			GameController.StartGame();
+			GameController.AddNewState(GameState.ViewingGameMenu);
 		}
 	}
 
