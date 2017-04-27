@@ -144,6 +144,7 @@ internal static class HighScoreController
 			}
 		}
 
+		//fixed by Voon.
 		SaveScores();
 	}
 	/// <summary>
