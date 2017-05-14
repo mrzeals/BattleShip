@@ -78,7 +78,12 @@ internal static class UtilityFunctions
 	/// <param name="showShips">indicates if the ships should be shown</param>
 	public static void DrawField(ISeaGrid grid, Player thePlayer, bool showShips)
 	{
-		DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT, CELL_GAP);
+		DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT, CELL_GAP, false);
+	}
+
+	public static void DrawDestroyField(ISeaGrid grid, Player thePlayer, bool showShips)
+	{
+		DrawCustomField(grid, thePlayer, false, showShips, FIELD_LEFT, FIELD_TOP, FIELD_WIDTH, FIELD_HEIGHT, CELL_WIDTH, CELL_HEIGHT, CELL_GAP, true);
 	}
 
 	/// <summary>
@@ -96,7 +101,7 @@ internal static class UtilityFunctions
 		const int SMALL_FIELD_CELL_HEIGHT = 13;
 		const int SMALL_FIELD_CELL_GAP = 4;
 
-		DrawCustomField(grid, thePlayer, true, true, SMALL_FIELD_LEFT, SMALL_FIELD_TOP, SMALL_FIELD_WIDTH, SMALL_FIELD_HEIGHT, SMALL_FIELD_CELL_WIDTH, SMALL_FIELD_CELL_HEIGHT, SMALL_FIELD_CELL_GAP);
+		DrawCustomField(grid, thePlayer, true, true, SMALL_FIELD_LEFT, SMALL_FIELD_TOP, SMALL_FIELD_WIDTH, SMALL_FIELD_HEIGHT, SMALL_FIELD_CELL_WIDTH, SMALL_FIELD_CELL_HEIGHT, SMALL_FIELD_CELL_GAP, false);
 	}
 
 	/// <summary>
@@ -113,7 +118,7 @@ internal static class UtilityFunctions
 	/// <param name="cellWidth">the width of each cell</param>
 	/// <param name="cellHeight">the height of each cell</param>
 	/// <param name="cellGap">the gap between the cells</param>
-	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight, int cellGap)
+	private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight, int cellGap, bool showDestroy)
 	{
 		//SwinGame.FillRectangle(Color.Blue, left, top, width, height)
 
@@ -198,6 +203,13 @@ internal static class UtilityFunctions
 		int shipWidth = 0;
 		string shipName = null;
 
+		//Added by Voon.
+		bool tugDestroyed = false;
+		bool submarineDestroyed = false;
+		bool destroyerDestroyed = false;
+		bool battleshipDestroyed = false;
+		bool aircraftDestroyed = false;
+
 		//Draw the ships
 		foreach (Ship s in thePlayer)
 		{
@@ -224,7 +236,38 @@ internal static class UtilityFunctions
 
 			if (!small)
 			{
-				SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+				if (showDestroy)
+				{
+					if (s.Size == 1 && s.IsDestroyed && tugDestroyed == false)
+					{
+						SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+						tugDestroyed = true;
+					}
+					else if (s.Size == 2 && s.IsDestroyed && submarineDestroyed == false)
+					{
+						SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+						submarineDestroyed = true;
+					}
+					else if (s.Size == 3 && s.IsDestroyed && destroyerDestroyed == false)
+					{
+						SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+						destroyerDestroyed = true;
+					}
+					else if (s.Size == 4 && s.IsDestroyed && battleshipDestroyed == false)
+					{
+						SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+						battleshipDestroyed = true;
+					}
+					else if (s.Size == 5 && s.IsDestroyed && aircraftDestroyed == false)
+					{
+						SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+						aircraftDestroyed = true;
+					}
+				}
+				else
+				{
+					SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+				}
 			}
 			else
 			{
