@@ -21,7 +21,8 @@ static class GameLogic
 		do
 		{
 			if (SwinGame.KeyDown(KeyCode.vk_LCTRL) && SwinGame.KeyTyped(KeyCode.vk_RETURN))
-				
+
+
 				SwinGame.ToggleFullScreen();
 			GameController.HandleUserInput();
 			GameController.DrawScreen();
