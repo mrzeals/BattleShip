@@ -25,6 +25,7 @@ internal static class EndingGameController
 		}
 		else
 		{
+			GameController.TheGame.StopTimer();
 			SwinGame.DrawTextLines("-- WINNER --", Color.White, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 			SwinGame.DrawTextLines("Left Click To Quit", Color.Yellow, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, 0, 350, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		}

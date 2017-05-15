@@ -75,4 +75,5 @@ C:\BattleShip\Battleships\bin\Debug\normnfkc.nlp
 C:\BattleShip\Battleships\bin\Debug\normnfkd.nlp
 C:\BattleShip\Battleships\obj\x86\Debug\Battleships.exe
 C:\BattleShip\Battleships\obj\x86\Debug\Battleships.pdb
-C:\Battleship\Battleships\obj\x86\Debug\Battleships.csprojResolveAssemblyReference.cache
+C:\BattleShip\Battleships\bin\Debug\Resources\images\deploy_home_button.png
+C:\BattleShip\Battleships\obj\x86\Debug\Battleships.csprojResolveAssemblyReference.cache

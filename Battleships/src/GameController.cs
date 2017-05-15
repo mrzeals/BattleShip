@@ -40,7 +40,10 @@ public static class GameController
 	public static Player HumanPlayer {
 		get { return _human; }
 	}
-
+	public static BattleShipsGame TheGame
+	{
+		get { return _theGame; }
+	}
 	/// <summary>
 	/// Returns the computer player.
 	/// </summary>

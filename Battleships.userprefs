@@ -4,10 +4,36 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Battleship Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BattleShip Status">
     <Files>
-      <File FileName="Battleships\src\Model\AIPlayer.cs" Line="17" Column="23" />
-      <File FileName="Battleship Status" />
+      <File FileName="Battleships\src\Model\AIPlayer.cs" Line="16" Column="20" />
+      <File FileName="Battleships\src\Model\AIHardPlayer.cs" Line="377" Column="3" />
+      <File FileName="Battleships\src\Model\Player.cs" Line="70" Column="16" />
+      <File FileName="Battleships\src\Model\AIMediumPlayer.cs" Line="17" Column="49" />
+      <File FileName="Battleships\src\Model\AIOption.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\AttackResult.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\BattleShipsGame.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\Direction.cs" Line="18" Column="1" />
+      <File FileName="Battleships\src\Model\ISeaGrid.cs" Line="16" Column="2" />
+      <File FileName="Battleships\src\DeploymentController.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\MenuController.cs" Line="23" Column="42" />
+      <File FileName="..\Users\Clarence\Downloads\BattleshipGame-master\BattleshipGame_C#\src\MenuController.cs" Line="288" Column="11" />
+      <File FileName="Battleships\src\Model\AIEasyPlayer.cs" Line="47" Column="1" />
+      <File FileName="Battleships\src\UtilityFunctions.cs" Line="347" Column="36" />
+      <File FileName="Battleships\src\DiscoveryController.cs" Line="1" Column="1" />
+      <File FileName="..\Users\Clarence\Downloads\Model\AIHardPlayer.cs" Line="17" Column="24" />
+      <File FileName="Battleships\src\GameLogic.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\GameController.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\GameResources.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\EndingGameController.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\GameState.cs" Line="46" Column="15" />
+      <File FileName="Battleships\src\Model\TileView.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\Tile.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\HighScoreController.cs" Line="104" Column="4" />
+      <File FileName="Battleships\src\Model\Ship.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\ResultOfAttack.cs" Line="1" Column="1" />
+      <File FileName="Battleships\src\Model\ShipName.cs" Line="1" Column="1" />
+      <File FileName="BattleShip Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />

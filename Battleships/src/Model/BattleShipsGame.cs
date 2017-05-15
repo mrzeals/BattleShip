@@ -32,6 +32,7 @@ public class BattleShipsGame
 	private Player[] _players = new Player[3];
 
 	private int _playerIndex = 0;
+	private Stopwatch _stopwatch;
 	/// <summary>
 	/// The current player.
 	/// </summary>
@@ -43,6 +44,20 @@ public class BattleShipsGame
 		get { return _players[_playerIndex]; }
 	}
 
+	public Stopwatch StopWatch
+	{
+		get { return _stopwatch; }
+		set { _stopwatch = value; }
+	}
+	public void StartTimer()
+	{
+		_stopwatch = new Stopwatch();
+		_stopwatch.Start();
+	}
+public void StopTimer()
+{
+
+	_stopwatch.Stop();	}
 	/// <summary>
 	/// AddDeployedPlayer adds both players and will make sure
 	/// that the AI player deploys all ships

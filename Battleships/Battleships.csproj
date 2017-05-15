@@ -64,6 +64,7 @@
     <Compile Include="src\Model\Tile.cs" />
     <Compile Include="src\Model\TileView.cs" />
     <Compile Include="src\GameLogic.cs" />
+    <Compile Include="src\Model\AIEasyPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\highscores.txt">
@@ -254,6 +255,9 @@
     <None Include="lib\win\smpeg.dll" />
     <None Include="lib\win\swingame.rc" />
     <None Include="lib\win\zlib1.dll" />
+    <None Include="Resources\images\deploy_home_button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
