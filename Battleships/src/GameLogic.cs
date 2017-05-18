@@ -20,6 +20,7 @@ static class GameLogic
 		//Game Loop
 		do
 		{
+			//Added by Clarence
 			if (SwinGame.KeyDown(KeyCode.vk_LCTRL) && SwinGame.KeyTyped(KeyCode.vk_RETURN))
 
 				SwinGame.ToggleFullScreen();
