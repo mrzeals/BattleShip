@@ -56,6 +56,8 @@ internal static class MenuController
 
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
+	//Added by clarence
+public static bool fullbool= false;
 
 	//Determine whether Background Music is muted or not.
 	//Added by Voon.
@@ -355,4 +357,20 @@ internal static class MenuController
 				break;
 		}
 	}
+public static void togglefullscreen()
+{
+
+	fullbool = true;
+	}
+	public static bool full
+{
+	get { return fullbool; }
+	set { fullbool = value; }
+}
+
+public static bool get_fullscreen
+{
+	get { return fullbool; }
+
+}
 }

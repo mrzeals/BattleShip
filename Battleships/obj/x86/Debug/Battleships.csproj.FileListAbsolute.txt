@@ -77,3 +77,5 @@ C:\BattleShip\Battleships\obj\x86\Debug\Battleships.exe
 C:\BattleShip\Battleships\obj\x86\Debug\Battleships.pdb
 C:\BattleShip\Battleships\bin\Debug\Resources\images\deploy_home_button.png
 C:\BattleShip\Battleships\obj\x86\Debug\Battleships.csprojResolveAssemblyReference.cache
+C:\BattleShip\Battleships\bin\Debug\nunit.framework.dll
+C:\BattleShip\Battleships\bin\Debug\nunit.framework.xml
