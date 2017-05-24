@@ -22,9 +22,10 @@ static class GameLogic
 		{
 			//Added by Clarence
 			if (SwinGame.KeyDown(KeyCode.vk_LCTRL) && SwinGame.KeyTyped(KeyCode.vk_RETURN))
-
+			{
 				SwinGame.ToggleFullScreen();
-
+				MenuController.togglefullscreen();
+			}
 			GameController.HandleUserInput();
 			GameController.DrawScreen();
 		} while (!(SwinGame.WindowCloseRequested() == true || GameController.CurrentState == GameState.Quitting));

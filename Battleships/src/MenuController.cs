@@ -357,6 +357,8 @@ public static bool fullbool= false;
 				break;
 		}
 	}
+
+//function of toggle fullscreen for unit testing
 public static void togglefullscreen()
 {
 

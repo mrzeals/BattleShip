@@ -16,6 +16,7 @@ namespace Battleships
 			MenuController.togglefullscreen();
 			Assert.AreEqual(true, MenuController.get_fullscreen);
 
+
 		}
 	}
 }
